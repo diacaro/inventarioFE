@@ -31,12 +31,11 @@ import Scrollbar from '../components/scrollbar';
 // sections
 import { StockListHead, StockListToolbar } from '../sections/@dashboard/stock';
 // mock
-import STOCKLIST from '../_mock/stock';
-
-
+//  import products from '../_mock/stock';
 import { getListProduct } from '../service/productService'
 
 // ----------------------------------------------------------------------
+
 
 const TABLE_HEAD = [
   { id: 'name', label: 'de', alignRight: false },
@@ -118,7 +117,7 @@ export default function StockPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = STOCKLIST.map((n) => n.name);
+      const newSelecteds = products.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
@@ -154,9 +153,9 @@ export default function StockPage() {
     setFilterName(event.target.value);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - STOCKLIST.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - products.length) : 0;
 
-  const filteredStock = applySortFilter(STOCKLIST, getComparator(order, orderBy), filterName);
+  const filteredStock = applySortFilter(products, getComparator(order, orderBy), filterName);
 
   const isNotFound = !filteredStock.length && !!filterName;
 
@@ -186,40 +185,38 @@ export default function StockPage() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={STOCKLIST.length}
+                  rowCount={products.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
                 />
                 <TableBody>
                   {filteredStock.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, name, role, status, company, avatarUrl, isVerified } = row;
-                    const selectedUser = selected.indexOf(name) !== -1;
+                    const { id, nombre, clima, precio, idCategoria, idMesa } = row;
+                    const selectedUser = selected.indexOf(nombre) !== -1;
+                    console.log(row)
 
                     return (
                       <TableRow hover key={id} tabIndex={-1} role="checkbox" selected={selectedUser}>
                         <TableCell padding="checkbox">
-                          <Checkbox checked={selectedUser} onChange={(event) => handleClick(event, name)} />
+                          <Checkbox checked={selectedUser} onChange={(event) => handleClick(event, nombre)} />
                         </TableCell>
 
                         <TableCell component="th" scope="row" padding="none">
                           <Stack direction="row" alignItems="center" spacing={2}>
-                            <Avatar alt={name} src={avatarUrl} />
+                            {/* <Avatar alt={nombre} src={avatarUrl} /> */}
                             <Typography variant="subtitle2" noWrap>
-                              {name}
+                              {nombre}
                             </Typography>
                           </Stack>
                         </TableCell>
 
-                        <TableCell align="left">{company}</TableCell>
+                        <TableCell align="left">{clima}</TableCell>
 
-                        <TableCell align="left">{role}</TableCell>
+                        <TableCell align="left">{precio}</TableCell>
 
-                        <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
+                        <TableCell align="left">{idCategoria ? 'Yes' : 'No'}</TableCell>
 
-                        <TableCell align="left">
-                          <Label color={(status === 'banned' && 'error') || 'success'}>{sentenceCase(status)}</Label>
-                        </TableCell>
 
                         <TableCell align="right">
                           <IconButton size="large" color="inherit" onClick={handleOpenMenu}>
@@ -266,7 +263,7 @@ export default function StockPage() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={STOCKLIST.length}
+            count={products.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
