@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
+import Formulario from './sections/@dashboard/stock/formulario/Formulario';
 
 // ----------------------------------------------------------------------
 
@@ -23,12 +24,18 @@ export default function Router() {
         { path: 'stock', element: <StockPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
+          {
+          path: 'newp',
+          element: <Formulario />,  
+            },
       ],
     },
     {
       path: 'login',
       element: <LoginPage />,
     },
+
+ 
     {
       element: <SimpleLayout />,
       children: [

@@ -25,11 +25,13 @@ import {
   TablePagination,
 } from '@mui/material';
 // components
+
 import Label from '../components/label';
 import Iconify from '../components/iconify';
 import Scrollbar from '../components/scrollbar';
 // sections
 import { StockListHead, StockListToolbar } from '../sections/@dashboard/stock';
+
 // mock
 //  import products from '../_mock/stock';
 import { getListProduct } from '../service/productService'
@@ -170,8 +172,9 @@ export default function StockPage() {
           <Typography variant="h4" gutterBottom>
             Products
           </Typography>
-          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} href="newp" >
             New Product
+            
           </Button>
         </Stack>
 
