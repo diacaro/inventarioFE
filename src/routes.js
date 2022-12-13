@@ -9,7 +9,8 @@ import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
-import Formulario from './sections/@dashboard/stock/formulario/Formulario';
+import NewProduct from './sections/@dashboard/stock/NewProduct';
+import NewCategoria from './sections/@dashboard/categoria/NewCategoria';
 
 // ----------------------------------------------------------------------
 
@@ -23,10 +24,10 @@ export default function Router() {
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'stock', element: <StockPage /> },
         { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
+        { path: 'newcategoria', element: <NewCategoria /> },
           {
           path: 'newp',
-          element: <Formulario />,  
+          element: <NewProduct />,  
             },
       ],
     },
