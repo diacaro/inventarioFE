@@ -11,6 +11,8 @@ import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import NewProduct from './sections/@dashboard/stock/NewProduct';
 import NewCategoria from './sections/@dashboard/categoria/NewCategoria';
+import NewMesa from './sections/@dashboard/mesa/NewMesa';
+import NewInvernadero from './sections/@dashboard/invernadero/NewInvernadero';
 
 // ----------------------------------------------------------------------
 
@@ -25,10 +27,18 @@ export default function Router() {
         { path: 'stock', element: <StockPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'newcategoria', element: <NewCategoria /> },
-          {
+        {
           path: 'newp',
-          element: <NewProduct />,  
-            },
+          element: <NewProduct />,
+        },
+        {
+          path: 'newm',
+          element: <NewMesa />,
+        },
+        {
+          path: 'newi',
+          element: <NewInvernadero />,
+        },
       ],
     },
     {
@@ -36,7 +46,6 @@ export default function Router() {
       element: <LoginPage />,
     },
 
- 
     {
       element: <SimpleLayout />,
       children: [

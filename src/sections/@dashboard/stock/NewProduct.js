@@ -1,46 +1,35 @@
-import { Button, Grid, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Button, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 // import { addProduct } from "src/service/addProdcut";
 import * as Yup from 'yup';
 import { getListInvernadero } from '../../../service/invernaderoService';
 import { getListMesa } from '../../../service/mesaService';
+import { getListCategoria } from '../../../service/categoriaService';
 
 
 import './NewProduct.css';
 
 const Formulario = () => {
-  const [invernaderos, setInvernaderos] = useState([]);
+  const [invernadero, setInvernadero] = useState([]);
   const [mesa, setMesa] = useState([]);
+  const [categoria, setCategoria] = useState([]);
 
   useEffect(() => {
     getListInvernadero().then((data) => {
-      setInvernaderos(data);
+      setInvernadero(data);
       console.log(data);
     });
     getListMesa().then((data) => {
       setMesa(data);
       console.log(data);
     });
+    getListCategoria().then((data) => {
+      setCategoria(data);
+      console.log(data);
+    });
   }, []);
 
-  // let valoresIniciales = {
-  //   nombre: "",
-  //   email: "",
-  //   contraseña: ""
-  // }
-
-  // const enviarForm = (data) => {
-  //   console.log(data);
-  // };
-  // useEffect(() => {
-  //   addProduct().then(data => {
-
-  //     console.log(data)
-
-  //        }
-  //   );
-  // }, []);
 
   const { handleSubmit, handleChange, values, setFieldValue, errors } = useFormik({
     initialValues: {
@@ -134,6 +123,21 @@ const Formulario = () => {
             />
           </Grid>
           <Grid item xs={12} md={6}>
+          <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Categoria</InputLabel>
+          <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={values.idCategoria}
+              label="idCategoria"
+              onChange={handleChange}
+            >{ 
+              categoria.map(item =>
+                <MenuItem key = {item.id} value={item.id}>{item.categoria}</MenuItem>
+                )
+            }
+            </Select>
+            </FormControl>
             <TextField
               type="text"
               label="Categoria"
@@ -147,6 +151,8 @@ const Formulario = () => {
             />
           </Grid>
           <Grid item xs={12} md={6}>
+          <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Mesa</InputLabel>
           <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
@@ -159,6 +165,7 @@ const Formulario = () => {
                 )
             }
             </Select>
+            </FormControl>
             <TextField
               type="text"
               label="Mesa"
@@ -172,18 +179,22 @@ const Formulario = () => {
             />
           </Grid>
           <Grid item xs={12} md={6}>
+
+          <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Invernadero</InputLabel>            
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={values.invernadero}
-              label="invernadero"
+              value={values.idInvernadero}
+              label="idInvernadero"
               onChange={handleChange}
             >{ 
-              invernaderos.map(item =>
+              invernadero.map(item =>
                 <MenuItem Key={item.id} value={item.id} >{item.invernadero}</MenuItem>
                 )
             }
             </Select>
+            </FormControl>
 
             
             <TextField

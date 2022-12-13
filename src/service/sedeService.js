@@ -1,7 +1,7 @@
 
 
-const getListMesa = async () => {
-    const response = await fetch(`http://localhost:8081/mesa`,{
+const getListSede = async () => {
+    const response = await fetch(`http://localhost:8081/invernadero`,{
         method: 'GET'
     });    
     const data = await response.json();
@@ -9,15 +9,15 @@ const getListMesa = async () => {
     return  data;
 }
 
-const createMesa = async(mesa) => {
-    console.log(mesa)
-     const data = { mesa}
+const createSede = async(sede) => {
+    console.log(sede)
+     const data = { sede}
     // const response = await 
-    fetch(`http://localhost:8081/mesa`,{
+    fetch(`http://localhost:8081/invernadero`,{
       method:'POST',
       headers: {
         'Content-Type': 'application/json',},
-      body: JSON.stringify(mesa)
+      body: JSON.stringify(sede)
       });
     //  const data = await response.json();
 
@@ -28,7 +28,7 @@ const createMesa = async(mesa) => {
 
 
 export {
-    getListMesa,
-    createMesa,
+    getListSede,
+    createSede,
 
 }
