@@ -19,8 +19,8 @@ const Formulario = () => {
     },
 
     validationSchema: Yup.object({
-      Invernadero: Yup.string().required('Debes ingresar el Invernadero'),
-      sede: Yup.string().required('Debes ingresar la sede'),
+      // Invernadero: Yup.string().required('Debes ingresar el Invernadero'),
+      // sede: Yup.string().required('Debes ingresar la sede'),
 
     }),
 
@@ -47,9 +47,9 @@ const Formulario = () => {
               fullWidth
               name="invernadero"
               onChange={handleChange}
-              value={values.invernadero}
-              error={errors.invernadero}
-              helperText={errors.invernadero}
+              value={values.Invernadero}
+              error={errors.Invernadero}
+              helperText={errors.Invernadero}
             />
           </Grid> 
           <Grid item xs={12} md={12}>

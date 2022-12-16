@@ -9,9 +9,20 @@ const getListProduct = async () => {
     return  data;
 }
 
+const deleteProduct = async (productId) => {
+    const resp = await fetch(`http://localhost:8081/productos`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',},
+          body: JSON.stringify(productId)              
+    });
+    return  resp.json();
+}
+
 
 
 export {
     getListProduct,
+    deleteProduct,
 
 }

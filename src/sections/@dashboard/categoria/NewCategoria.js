@@ -10,25 +10,6 @@ import './NewCategoria.css';
 
 const Formulario = () => {
  
-
-  // let valoresIniciales = {
-  //   nombre: "",
-  //   email: "",
-  //   contraseña: ""
-  // }
-
-  // const enviarForm = (data) => {
-  //   console.log(data);
-  // };
-  // useEffect(() => {
-  //   addProduct().then(data => {
-
-  //     console.log(data)
-
-  //        }
-  //   );
-  // }, []);
-
   const { handleSubmit, handleChange, values, setFieldValue, errors } = useFormik({
     initialValues: {
       categoria: '',

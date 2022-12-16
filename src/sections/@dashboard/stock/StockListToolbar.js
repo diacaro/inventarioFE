@@ -38,7 +38,9 @@ StockListToolbar.propTypes = {
   onFilterName: PropTypes.func,
 };
 
+
 export default function StockListToolbar({ numSelected, filterName, onFilterName }) {
+
   return (
     <StyledRoot
       sx={{
@@ -66,18 +68,21 @@ export default function StockListToolbar({ numSelected, filterName, onFilterName
       )}
 
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
+        <Tooltip>
+          <IconButton type="submit" variant="contained">
             <Iconify icon="eva:trash-2-fill" />
           </IconButton>
         </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
+            
+            
+            ) : (   
+              <Tooltip title="Filter list">
           <IconButton>
             <Iconify icon="ic:round-filter-list" />
           </IconButton>
         </Tooltip>
       )}
+
     </StyledRoot>
   );
 }

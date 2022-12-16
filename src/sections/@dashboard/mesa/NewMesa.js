@@ -26,13 +26,13 @@ const Formulario = () => {
   const { handleSubmit, handleChange, values, setFieldValue, errors } = useFormik({
     initialValues: {
       mesa: '',
-      invernadero: '',
+      // invernadero: '',
 
     },
 
     validationSchema: Yup.object({
-      mesa: Yup.string().required('Debes ingresar la mesa'),
-      invernadero: Yup.string().required(),
+      // mesa: Yup.string().required('Debes ingresar la mesa'),
+      // invernadero: Yup.string().required(),
 
     }),
 

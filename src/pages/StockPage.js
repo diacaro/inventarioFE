@@ -40,10 +40,13 @@ import { getListProduct } from '../service/productService'
 
 
 const TABLE_HEAD = [
-  { id: 'name', label: 'de', alignRight: false },
-  { id: 'company', label: 'Company', alignRight: false },
-  { id: 'role', label: 'Role', alignRight: false },
-  { id: 'isVerified', label: 'Verified', alignRight: false },
+  { id: 'name', label: 'Nombre', alignRight: false },
+  { id: 'clima', label: 'Clima', alignRight: false },
+  { id: 'precio', label: 'Precio  ', alignRight: false },
+  { id: 'IdCategoria', label: 'Categoria', alignRight: false },
+  { id: 'IdMesa', label: 'Mesa', alignRight: false },
+  { id: 'IdInvernadero', label: 'Invernadero', alignRight: false },
+  { id: 'sede', label: 'Sede', alignRight: false },
   { id: 'status', label: 'Status', alignRight: false },
   { id: '' },
 ];
@@ -182,7 +185,7 @@ export default function StockPage() {
           <StockListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
 
           <Scrollbar>
-            <TableContainer sx={{ minWidth: 800 }}>
+            <TableContainer sx={{ minWidth: 700 }}>
               <Table>
                 <StockListHead
                   order={order}
@@ -195,7 +198,7 @@ export default function StockPage() {
                 />
                 <TableBody>
                   {filteredStock.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                    const { id, nombre, clima, precio, idCategoria, idMesa } = row;
+                    const { id, nombre, clima, precio, idCategoria, idMesa, idInvernadero, sede} = row;
                     const selectedUser = selected.indexOf(nombre) !== -1;
                     console.log(row)
 
@@ -215,10 +218,12 @@ export default function StockPage() {
                         </TableCell>
 
                         <TableCell align="left">{clima}</TableCell>
-
                         <TableCell align="left">{precio}</TableCell>
-
-                        <TableCell align="left">{idCategoria ? 'Yes' : 'No'}</TableCell>
+                        <TableCell align="left">{idCategoria}</TableCell>
+                        <TableCell align="left">{idMesa}</TableCell>
+                        <TableCell align="left">{idInvernadero}</TableCell>
+                        <TableCell align="left">{sede}</TableCell>
+                        {/* <TableCell align="left">{status ? 'Yes' : 'No'}</TableCell> */}
 
 
                         <TableCell align="right">
