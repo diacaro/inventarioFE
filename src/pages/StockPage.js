@@ -33,8 +33,8 @@ import Scrollbar from '../components/scrollbar';
 import { StockListHead, StockListToolbar } from '../sections/@dashboard/stock';
 
 // mock
-//  import products from '../_mock/stock';
-import { getListProduct } from '../service/productService'
+//  import product from '../_mock/stock';
+import { getListProduct,deleteProduct } from '../service/productService'
 
 // ----------------------------------------------------------------------
 
@@ -96,11 +96,11 @@ export default function StockPage() {
   const [filterName, setFilterName] = useState('');
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [products, setProducts] = useState([]);
+  const [product, setproduct] = useState([]);
 
   useEffect(() => {
     getListProduct().then(data => {
-      setProducts(data);     
+      setproduct(data);     
       console.log(data)
     }
     );
@@ -109,6 +109,11 @@ export default function StockPage() {
   const handleOpenMenu = (event) => {
     setOpen(event.currentTarget);
   };
+
+  const deletep = (productId) => {
+    deleteProduct(productId);
+  };
+  
 
   const handleCloseMenu = () => {
     setOpen(null);
@@ -122,12 +127,13 @@ export default function StockPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = products.map((n) => n.name);
+      const newSelecteds = product.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
+
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
@@ -158,22 +164,22 @@ export default function StockPage() {
     setFilterName(event.target.value);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - products.length) : 0;
+  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - product.length) : 0;
 
-  const filteredStock = applySortFilter(products, getComparator(order, orderBy), filterName);
+  const filteredStock = applySortFilter(product, getComparator(order, orderBy), filterName);
 
   const isNotFound = !filteredStock.length && !!filterName;
 
   return (
     <>
       <Helmet>
-        <title> Products </title>
+        <title> product </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Products
+            product
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} href="newp" >
             New Product
@@ -191,7 +197,7 @@ export default function StockPage() {
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={products.length}
+                  rowCount={product.length}
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -271,7 +277,7 @@ export default function StockPage() {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={products.length}
+            count={product.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
@@ -303,11 +309,14 @@ export default function StockPage() {
           Edit
         </MenuItem>
 
-        <MenuItem sx={{ color: 'error.main' }}>
+        <MenuItem key={product.id} sx={{ color: 'error.main' }} onClick={() => deletep(product.id)} >
+        {/* <MenuItem sx={{ color: 'error.main' }} onClick={(e) => deletep(product.id, e)} > */}
           <Iconify icon={'eva:trash-2-outline'} sx={{ mr: 2 }} />
           Delete
+
         </MenuItem>
       </Popover>
+
     </>
   );
 }

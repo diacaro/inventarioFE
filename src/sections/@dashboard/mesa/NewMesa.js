@@ -26,7 +26,7 @@ const Formulario = () => {
   const { handleSubmit, handleChange, values, setFieldValue, errors } = useFormik({
     initialValues: {
       mesa: '',
-      // invernadero: '',
+      invernadero: '',
 
     },
 
@@ -73,7 +73,7 @@ const Formulario = () => {
             
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={values.idInvernadero}
+            value={values.invernadero}
             label="idInvernadero"
               onChange={handleChange}
             >{ 

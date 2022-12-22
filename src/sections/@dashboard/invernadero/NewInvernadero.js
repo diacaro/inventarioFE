@@ -47,9 +47,9 @@ const Formulario = () => {
               fullWidth
               name="invernadero"
               onChange={handleChange}
-              value={values.Invernadero}
-              error={errors.Invernadero}
-              helperText={errors.Invernadero}
+              value={values.invernadero}
+              error={errors.invernadero}
+              helperText={errors.invernadero}
             />
           </Grid> 
           <Grid item xs={12} md={12}>

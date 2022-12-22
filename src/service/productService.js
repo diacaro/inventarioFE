@@ -10,7 +10,7 @@ const getListProduct = async () => {
 }
 
 const deleteProduct = async (productId) => {
-    const resp = await fetch(`http://localhost:8081/productos`, {
+    const resp = await fetch(`http://localhost:8081/productos/delete/${productId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',},

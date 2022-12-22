@@ -2,8 +2,9 @@ import { Helmet } from 'react-helmet-async';
 import { faker } from '@faker-js/faker';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Grid, Container, Typography } from '@mui/material';
+import { Grid, Container, Typography, Button } from '@mui/material';
 // components
+// import Button from 'src/theme/overrides/Button';
 import Iconify from '../components/iconify';
 // sections
 import {
@@ -52,6 +53,24 @@ export default function DashboardAppPage() {
           </Grid> */}
 
           <Grid item xs={12} md={6} lg={8}>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} href="newp" >
+            Nuevo Producto
+            
+          </Button>
+          </Grid>
+          <Grid item xs={12} md={6} lg={8}>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} href="newi" >
+            Nuevo Invernadero
+            
+          </Button>
+          </Grid>
+          <Grid item xs={12} md={6} lg={8}>
+          <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} href="newm" >
+            Nueva Mesa
+            
+          </Button>
+          </Grid>
+
             {/* <AppWebsiteVisits
               title="Website Visits"
               subheader="(+43%) than last year"
@@ -89,7 +108,7 @@ export default function DashboardAppPage() {
                 },
               ]}
             /> */}
-          </Grid>
+          {/* </Grid> */}
 
           <Grid item xs={12} md={6} lg={4}>
             {/* <AppCurrentVisits

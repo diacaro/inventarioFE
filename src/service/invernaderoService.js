@@ -24,22 +24,22 @@ const createInvernadero = async(invernadero) => {
     // return response.json();
     }
 
-    export {
+    // export {
     
-        getListInvernadero,
-        createInvernadero,
+    //     getListInvernadero,
+    //     createInvernadero,
     
-    }
+    // }
 
 
-    const getListSede = async () => {
-        const response = await fetch(`http://localhost:8081/invernadero`,{
-            method: 'GET'
-        });    
-        const data = await response.json();
-    //    console.log(data)
-        return  data;
-    }
+    // const getListSede = async () => {
+    //     const response = await fetch(`http://localhost:8081/invernadero`,{
+    //         method: 'GET'
+    //     });    
+    //     const data = await response.json();
+    // //    console.log(data)
+    //     return  data;
+    // }
     
     const createSede = async(sede) => {
         console.log(sede)
@@ -62,8 +62,10 @@ const createInvernadero = async(invernadero) => {
 
 
 export {
+    getListInvernadero,
+    createInvernadero,
 
-    getListSede,
+    // getListSede,
     createSede,
 
 }
