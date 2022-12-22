@@ -57,19 +57,19 @@ export default function DashboardAppPage() {
             Nuevo Producto
             
           </Button>
-          </Grid>
-          <Grid item xs={12} md={6} lg={8}>
+         
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} href="newi" >
             Nuevo Invernadero
             
           </Button>
-          </Grid>
-          <Grid item xs={12} md={6} lg={8}>
+
+
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />} href="newm" >
             Nueva Mesa
             
           </Button>
           </Grid>
+          
 
             {/* <AppWebsiteVisits
               title="Website Visits"

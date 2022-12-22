@@ -42,13 +42,13 @@ import { getListProduct,deleteProduct } from '../service/productService'
 const TABLE_HEAD = [
   { id: 'name', label: 'Nombre', alignRight: false },
   { id: 'clima', label: 'Clima', alignRight: false },
-  { id: 'precio', label: 'Precio  ', alignRight: false },
+  { id: 'precio', label: 'Precio', alignRight: false },
   { id: 'IdCategoria', label: 'Categoria', alignRight: false },
   { id: 'IdMesa', label: 'Mesa', alignRight: false },
   { id: 'IdInvernadero', label: 'Invernadero', alignRight: false },
   { id: 'sede', label: 'Sede', alignRight: false },
   { id: 'status', label: 'Status', alignRight: false },
-  { id: '' },
+  { id: ''},
 ];
 
 // ----------------------------------------------------------------------
@@ -113,6 +113,8 @@ export default function StockPage() {
   const deletep = (productId) => {
     deleteProduct(productId);
   };
+
+  
   
 
   const handleCloseMenu = () => {
@@ -303,18 +305,27 @@ export default function StockPage() {
             },
           },
         }}
-      >
+        >
         <MenuItem>
           <Iconify icon={'eva:edit-fill'} sx={{ mr: 2 }} />
           Edit
         </MenuItem>
 
-        <MenuItem key={product.id} sx={{ color: 'error.main' }} onClick={() => deletep(product.id)} >
+        {filteredStock.map((row) => {
+                const { id } = row;  
+                console.log (row)
+                return (
+
+        <MenuItem  key={id} sx={{ color: 'error.main' }} onClick={() => deletep (row.id)} >
         {/* <MenuItem sx={{ color: 'error.main' }} onClick={(e) => deletep(product.id, e)} > */}
           <Iconify icon={'eva:trash-2-outline'} sx={{ mr: 2 }} />
           Delete
 
         </MenuItem>
+
+     );
+        
+      })}
       </Popover>
 
     </>
